@@ -1,1 +1,13 @@
 services:
+  mysql:
+    image: mysql:9.0.1
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+    ports:
+      - "3306:3306"
+    volumes:
+      - furiafan-bot:/var/lib/mysql
+volumes:
+  furiafan-bot:
