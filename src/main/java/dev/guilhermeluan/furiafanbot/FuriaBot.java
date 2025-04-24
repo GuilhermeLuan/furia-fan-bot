@@ -14,7 +14,7 @@ public class FuriaBot extends AbilityBot {
 
     @Value("${telegram.creator.id}")
     private Long creatorId;
-    private ResponseHandler responseHandler;
+    private final ResponseHandler responseHandler;
 
     @Autowired
     public FuriaBot(
@@ -22,10 +22,10 @@ public class FuriaBot extends AbilityBot {
             @Value("${telegram.bot.username}") String username
     ) {
         super(token, username, new DefaultBotOptions());
-        this.responseHandler = new ResponseHandler(silent);
+        this.responseHandler = new ResponseHandler(this);
     }
 
-    public Ability startBot(){
+    public Ability startBot() {
         return Ability.builder()
                 .name("start")
                 .info("Start the bot")
@@ -34,7 +34,7 @@ public class FuriaBot extends AbilityBot {
                 .action(ctx -> {
                     responseHandler.sendMessage(ctx.chatId());
 
-                } )
+                })
                 .build();
     }
 

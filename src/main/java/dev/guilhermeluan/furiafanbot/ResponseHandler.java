@@ -1,20 +1,16 @@
 package dev.guilhermeluan.furiafanbot;
 
-import org.telegram.abilitybots.api.sender.SilentSender;
-import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
-import org.telegram.telegrambots.meta.api.objects.Message;
 
 import static dev.guilhermeluan.furiafanbot.Constants.*;
 
 public class ResponseHandler {
-    private final SilentSender sender;
-    // private final Map<Long, UserState> chatStates;
+    private final FuriaBot botInstance;
 
-    public ResponseHandler(SilentSender sender) {
-        this.sender = sender;
+    public ResponseHandler(FuriaBot botInstance) {
+        this.botInstance = botInstance;
     }
 
     public void sendMessage(Long chatId) {
@@ -22,7 +18,7 @@ public class ResponseHandler {
         msg.setChatId(chatId);
         msg.setText(START_TEXT);
         try {
-            sender.execute(msg);
+            botInstance.execute(msg);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,7 +33,7 @@ public class ResponseHandler {
         photo.setCaption(LOGO_FURIA_CAPTION);
 
         try {
-            sender.execute((BotApiMethod<Message>) photo);
+            botInstance.execute(photo);
         } catch (Exception e) {
             e.printStackTrace();
         }
