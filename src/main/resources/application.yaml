@@ -3,6 +3,8 @@ spring:
     name: furia-fan-bot
 
 telegram:
+  creator:
+    id: ${TELEGRAM_CREATOR_ID}
   bot:
     username: ${TELEGRAM_BOT_USERNAME}
     token: ${TELEGRAM_BOT_TOKEN}
