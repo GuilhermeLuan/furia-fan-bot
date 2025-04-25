@@ -1,5 +1,6 @@
-package dev.guilhermeluan.furiafanbot;
+package dev.guilhermeluan.furiafanbot.bot;
 
+import dev.guilhermeluan.furiafanbot.handler.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

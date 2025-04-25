@@ -1,10 +1,11 @@
-package dev.guilhermeluan.furiafanbot;
+package dev.guilhermeluan.furiafanbot.handler;
 
+import dev.guilhermeluan.furiafanbot.bot.FuriaBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 
-import static dev.guilhermeluan.furiafanbot.Constants.*;
+import static dev.guilhermeluan.furiafanbot.util.Constants.*;
 
 public class ResponseHandler {
     private final FuriaBot botInstance;
@@ -30,7 +31,6 @@ public class ResponseHandler {
 
         photo.setChatId(chatId.toString());
         photo.setPhoto(img);
-        photo.setCaption(LOGO_FURIA_CAPTION);
 
         try {
             botInstance.execute(photo);

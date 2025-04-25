@@ -1,4 +1,4 @@
-package dev.guilhermeluan.furiafanbot;
+package dev.guilhermeluan.furiafanbot.util;
 
 public class Constants {
     public static final String START_TEXT =
