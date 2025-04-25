@@ -28,7 +28,7 @@ public class OpenFeignTest {
     }
 
     @GetMapping("/past")
-    public Object testPastMatches() {
+    public List<MatchDTO> testPastMatches() {
         return pandaScoreClient.getPastMatches();
     }
 }
