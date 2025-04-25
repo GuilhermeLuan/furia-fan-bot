@@ -1,9 +1,12 @@
 package dev.guilhermeluan.furiafanbot.service;
 
-import dev.guilhermeluan.furiafanbot.infra.client.PandaScoreClient;
+import dev.guilhermeluan.furiafanbot.client.PandaScoreClient;
+import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/test")
@@ -20,8 +23,8 @@ public class OpenFeignTest {
     }
 
     @GetMapping("/next")
-    public Object testNextMatches() {
-        return pandaScoreClient.getNextMatches();
+    public List<MatchDTO> testNextMatches() {
+        return pandaScoreClient.getUpcomingMatches();
     }
 
     @GetMapping("/past")
