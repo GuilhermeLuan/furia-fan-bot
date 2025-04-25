@@ -5,7 +5,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 
-import static dev.guilhermeluan.furiafanbot.util.Constants.*;
+import static dev.guilhermeluan.furiafanbot.util.Constants.LOGO_URL;
+import static dev.guilhermeluan.furiafanbot.util.Constants.START_TEXT;
 
 public class ResponseHandler {
     private final FuriaBot botInstance;

@@ -8,3 +8,8 @@ telegram:
   bot:
     username: ${TELEGRAM_BOT_USERNAME}
     token: ${TELEGRAM_BOT_TOKEN}
+
+panda_score:
+  api:
+    url: ${PANDA_SCORE_API_URL}
+    token: ${PANDA_SCORE_API_TOKEN}
