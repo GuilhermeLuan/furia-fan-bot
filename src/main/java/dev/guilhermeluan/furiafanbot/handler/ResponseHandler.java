@@ -1,6 +1,9 @@
 package dev.guilhermeluan.furiafanbot.handler;
 
 import dev.guilhermeluan.furiafanbot.bot.FuriaBot;
+import dev.guilhermeluan.furiafanbot.service.MatchInfoService;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -8,10 +11,11 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import static dev.guilhermeluan.furiafanbot.util.Constants.LOGO_URL;
 import static dev.guilhermeluan.furiafanbot.util.Constants.START_TEXT;
 
+@Component
 public class ResponseHandler {
     private final FuriaBot botInstance;
 
-    public ResponseHandler(FuriaBot botInstance) {
+    public ResponseHandler(@Lazy FuriaBot botInstance) {
         this.botInstance = botInstance;
     }
 

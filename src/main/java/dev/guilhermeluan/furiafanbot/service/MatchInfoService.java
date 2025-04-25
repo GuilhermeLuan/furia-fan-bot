@@ -13,7 +13,7 @@ public class MatchInfoService {
     public MatchInfoService(PandaScoreClient pandaScoreClient) {
         this.pandaScoreClient = pandaScoreClient;
     }
-    
+
     public List<MatchDTO> getNextMatches() {
         return pandaScoreClient.getUpcomingMatches();
     }

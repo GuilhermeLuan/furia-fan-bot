@@ -1,42 +1,37 @@
 package dev.guilhermeluan.furiafanbot.bot;
 
-import dev.guilhermeluan.furiafanbot.handler.ResponseHandler;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.abilitybots.api.bot.AbilityBot;
-import org.telegram.abilitybots.api.objects.Ability;
-import org.telegram.abilitybots.api.objects.Locality;
-import org.telegram.abilitybots.api.objects.Privacy;
+import org.telegram.abilitybots.api.util.AbilityExtension;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
+
+import java.util.List;
 
 @Component
 public class FuriaBot extends AbilityBot {
 
     @Value("${telegram.creator.id}")
     private Long creatorId;
-    private final ResponseHandler responseHandler;
+    private final List<AbilityExtension> extensions;
 
     @Autowired
     public FuriaBot(
-            @Value("${telegram.bot.token}") String token,
-            @Value("${telegram.bot.username}") String username
+            @Value("${telegram.bot.token}")
+            String token,
+            @Value("${telegram.bot.username}")
+            String username,
+            List<AbilityExtension> extensions
     ) {
         super(token, username, new DefaultBotOptions());
-        this.responseHandler = new ResponseHandler(this);
+        this.extensions = extensions;
     }
 
-    public Ability startBot() {
-        return Ability.builder()
-                .name("start")
-                .info("Start the bot")
-                .locality(Locality.ALL)
-                .privacy(Privacy.PUBLIC)
-                .action(ctx -> {
-                    responseHandler.sendMessage(ctx.chatId());
-                    responseHandler.sendImage(ctx.chatId());
-                })
-                .build();
+    @PostConstruct
+    public void registerCommands() {
+        extensions.forEach(this::addExtension);
     }
 
     @Override
