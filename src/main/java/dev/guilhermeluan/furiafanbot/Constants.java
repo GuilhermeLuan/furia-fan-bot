@@ -21,5 +21,6 @@ public class Constants {
 
 
     public static final String LOGO_FURIA_CAPTION = "Aqui está o logo da Furia! ⚫\uFE0F⚪\uFE0F\uD83D\uDC3E";
-    public static final String LOGO_URL = "https://upload.wikimedia.org/wikipedia/pt/thumb/4/4b/FURIA_Logo.png/800px-FURIA_Logo.png";
+    public static final String LOGO_URL =
+            "https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png";
 }

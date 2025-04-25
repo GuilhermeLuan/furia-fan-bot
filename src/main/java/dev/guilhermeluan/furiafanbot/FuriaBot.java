@@ -33,7 +33,7 @@ public class FuriaBot extends AbilityBot {
                 .privacy(Privacy.PUBLIC)
                 .action(ctx -> {
                     responseHandler.sendMessage(ctx.chatId());
-
+                    responseHandler.sendImage(ctx.chatId());
                 })
                 .build();
     }
