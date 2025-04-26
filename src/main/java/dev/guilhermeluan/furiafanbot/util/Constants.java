@@ -20,7 +20,45 @@ public class Constants {
                     """;
 
 
-    public static final String LOGO_FURIA_CAPTION = "Aqui está o logo da Furia! ⚫\uFE0F⚪\uFE0F\uD83D\uDC3E";
-    public static final String LOGO_URL =
-            "https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png";
+    public static final String NEXT_MATCHES =
+            """
+                    Opa! 🐾 Fica ligado(a) nos próximos confrontos da Furia:
+                    
+                    ---
+                    
+                    ⚫️ Vitality vs TheMongolz ⚪️
+                    🏆 Campeonato: IEM (Playoffs)
+                    🗓️ Horário: 26/04/2025 - 07:00 BRT (10:00 UTC)
+                    🗺️ Formato: MD3
+                    📺 Streams:
+                       - https://www.twitch.tv/eslcsb
+                       - https://www.twitch.tv/eslcs
+                    
+                    ---
+                    
+                    ⚫️ Vitality vs Wildcard ⚪️
+                    🏆 Campeonato: BLAST Rivals (Group A)
+                    🗓️ Horário: 30/04/2025 - 05:00 BRT (08:00 UTC)
+                    🗺️ Formato: MD3
+                    📺 Streams:
+                       - https://www.twitch.tv/BLASTPremier
+                    
+                    ---
+                    
+                    Prepara a torcida e bora pra cima! 😉
+                    #DIADEFURIA #FURIACS
+                    
+                    """;
+
+    public static final String NO_NEXT_MATCHES =
+            """
+                    Opa! 🐾 Dei uma olhada aqui, mas parece que não tem nenhuma partida da Furia agendada no momento. 😥
+                    
+                    Fica de olho ou pergunta de novo mais tarde! Quem sabe já temos novidades. 😉
+                    
+                    Enquanto isso, que tal usar o /ultimoresultado ou /ajuda?
+                    
+                    #DIADEFURIA #FURIACS
+                    
+                    """;
 }

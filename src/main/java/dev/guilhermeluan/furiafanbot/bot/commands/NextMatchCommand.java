@@ -1,31 +1,36 @@
 package dev.guilhermeluan.furiafanbot.bot.commands;
 
+import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
 import dev.guilhermeluan.furiafanbot.handler.ResponseHandler;
+import dev.guilhermeluan.furiafanbot.service.MatchInfoService;
 import dev.guilhermeluan.furiafanbot.util.Constants;
 import org.springframework.stereotype.Component;
 import org.telegram.abilitybots.api.objects.Locality;
 import org.telegram.abilitybots.api.objects.MessageContext;
 import org.telegram.abilitybots.api.objects.Privacy;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 @Component
-public class StartCommand extends AbstractBotCommand {
+public class NextMatchCommand extends AbstractBotCommand{
 
     private final ResponseHandler responseHandler;
+    private final MatchInfoService matchInfoService;
 
-    public StartCommand(ResponseHandler responseHandler) {
+    public NextMatchCommand(ResponseHandler responseHandler, MatchInfoService matchInfoService) {
         this.responseHandler = responseHandler;
+        this.matchInfoService = matchInfoService;
     }
 
     @Override
     public String getName() {
-        return "start";
+        return "proximojogo";
     }
 
     @Override
     public String getInfo() {
-        return "Mensagem de boas-vindas.";
+        return "Exibe os próximos jogos da FURIA CS.";
     }
 
     @Override
@@ -41,7 +46,15 @@ public class StartCommand extends AbstractBotCommand {
     @Override
     public Consumer<MessageContext> getAction() {
         return ctx -> {
-            responseHandler.sendMessage(ctx.chatId(), Constants.START_TEXT);
+            List<MatchDTO> nextMatches = matchInfoService.getNextMatches();
+
+            if (nextMatches.isEmpty()) {
+                responseHandler.sendMessage(ctx.chatId(), Constants.NO_NEXT_MATCHES);
+                return;
+            }
+            // TODO - Formatar a resposta da API
+            String string = nextMatches.getFirst().toString();
+            responseHandler.sendMessage(ctx.chatId(), string);
         };
     }
 }
