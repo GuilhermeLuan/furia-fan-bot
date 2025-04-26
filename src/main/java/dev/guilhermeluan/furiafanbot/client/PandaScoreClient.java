@@ -16,19 +16,21 @@ public interface PandaScoreClient {
 
     @Value("${panda_score.api.token}")
     String PANDA_SCORE_API_KEY = "";
+    String FURIA_TEAM_ID = "124530";
+    String FURIA_TEAM_NAME = "FURIA";
 
     @GetMapping(
-            value = "/teams?filter[name]=FURIA"
+            value = "/teams?filter[name]=" + FURIA_TEAM_NAME
     )
     Object getFuriaTeamInfo();
 
     @GetMapping(
-            value = "/matches/upcoming?filter[opponent_id]=3455"
+            value = "/matches/upcoming?filter[opponent_id]=" + FURIA_TEAM_ID
     )
     List<MatchDTO> getUpcomingMatches();
 
     @GetMapping(
-            value = "/matches/past?filter[opponent_id]=124530"
+            value = "/matches/past?filter[opponent_id]=" + FURIA_TEAM_ID
     )
     List<MatchDTO> getPastMatches();
 }
