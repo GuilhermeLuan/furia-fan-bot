@@ -1,6 +1,12 @@
 spring:
   application:
     name: furia-fan-bot
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:my-password}
+      username: ${REDIS_USERNAME:default}
 
 telegram:
   creator:
