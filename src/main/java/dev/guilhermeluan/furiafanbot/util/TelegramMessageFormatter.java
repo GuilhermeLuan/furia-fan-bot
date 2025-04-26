@@ -1,9 +1,6 @@
 package dev.guilhermeluan.furiafanbot.util;
 
 import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
-import dev.guilhermeluan.furiafanbot.client.dto.OpponentDTO;
-import dev.guilhermeluan.furiafanbot.client.dto.OpponentWrapperDTO;
-import org.jetbrains.annotations.NotNull;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
