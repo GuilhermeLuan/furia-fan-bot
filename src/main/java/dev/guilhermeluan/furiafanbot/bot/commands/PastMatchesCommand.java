@@ -4,6 +4,7 @@ import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
 import dev.guilhermeluan.furiafanbot.handler.ResponseHandler;
 import dev.guilhermeluan.furiafanbot.service.MatchInfoService;
 import dev.guilhermeluan.furiafanbot.util.Constants;
+import dev.guilhermeluan.furiafanbot.util.TelegramMessageFormatter;
 import org.springframework.stereotype.Component;
 import org.telegram.abilitybots.api.objects.Locality;
 import org.telegram.abilitybots.api.objects.MessageContext;
@@ -47,10 +48,8 @@ public class PastMatchesCommand extends AbstractBotCommand{
     public Consumer<MessageContext> getAction() {
         return ctx -> {
             List<MatchDTO> pastMatches = matchInfoService.getPastMatches();
-
-            // TODO - Formatar a resposta da API
-            String string = pastMatches.getFirst().toString();
-            responseHandler.sendMessage(ctx.chatId(), string);
+            String formattedNextMatch = TelegramMessageFormatter.formatLastMatches(pastMatches);
+            responseHandler.sendMessage(ctx.chatId(), formattedNextMatch);
         };
     }
 }

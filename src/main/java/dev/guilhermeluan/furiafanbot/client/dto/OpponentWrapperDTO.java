@@ -9,11 +9,16 @@ import java.util.Objects;
 public class OpponentWrapperDTO {
 
     @JsonProperty("opponent")
-    private OpponentDTO opponent;
+    private OpponentDTO opponent; // <<< Referência ao OpponentDTO
 
+    @JsonProperty("type")
+    private String type; // Geralmente "Team"
+
+    // Construtor padrão
     public OpponentWrapperDTO() {
     }
 
+    // Getters e Setters
     public OpponentDTO getOpponent() {
         return opponent;
     }
@@ -22,23 +27,33 @@ public class OpponentWrapperDTO {
         this.opponent = opponent;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    // equals, hashCode, toString (Opcional)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OpponentWrapperDTO that = (OpponentWrapperDTO) o;
-        return Objects.equals(opponent, that.opponent);
+        return Objects.equals(opponent, that.opponent) && Objects.equals(type, that.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(opponent);
+        return Objects.hash(opponent, type);
     }
 
     @Override
     public String toString() {
         return "OpponentWrapperDTO{" +
                "opponent=" + opponent +
+               ", type='" + type + '\'' +
                '}';
     }
 }

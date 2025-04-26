@@ -30,7 +30,7 @@ public interface PandaScoreClient {
     List<MatchDTO> getUpcomingMatches();
 
     @GetMapping(
-            value = "/matches/past?filter[opponent_id]=" + FURIA_TEAM_ID
+            value = "/matches/past?page[size]=3&filter[opponent_id]=" + FURIA_TEAM_ID
     )
     List<MatchDTO> getPastMatches();
 }
