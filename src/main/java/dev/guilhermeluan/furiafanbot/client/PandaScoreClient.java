@@ -1,6 +1,7 @@
 package dev.guilhermeluan.furiafanbot.client;
 
 import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
+import dev.guilhermeluan.furiafanbot.config.OpenFeignConfig;
 import dev.guilhermeluan.furiafanbot.config.PandaScoreClientConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @FeignClient(
         value = "pandascore", url = "https://api.pandascore.co/csgo",
-        configuration = PandaScoreClientConfiguration.class
+        configuration = {PandaScoreClientConfiguration.class, OpenFeignConfig.class}
 )
 public interface PandaScoreClient {
 

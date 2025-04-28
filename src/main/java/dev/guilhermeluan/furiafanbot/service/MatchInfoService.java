@@ -2,6 +2,7 @@ package dev.guilhermeluan.furiafanbot.service;
 
 import dev.guilhermeluan.furiafanbot.client.PandaScoreClient;
 import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +15,12 @@ public class MatchInfoService {
         this.pandaScoreClient = pandaScoreClient;
     }
 
+    @Cacheable(value = "matches")
     public List<MatchDTO> getNextMatches() {
         return pandaScoreClient.getUpcomingMatches();
     }
 
+    @Cacheable(value = "pastMatches")
     public List<MatchDTO> getPastMatches() {
         return pandaScoreClient.getPastMatches();
     }

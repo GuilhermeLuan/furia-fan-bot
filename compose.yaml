@@ -1,13 +1,8 @@
 services:
-  mysql:
-    image: mysql:9.0.1
-    environment:
-      MYSQL_ROOT_PASSWORD: dev
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: dev
+  redis:
+    image: bitnami/redis:latest
     ports:
-      - "3306:3306"
-    volumes:
-      - furiafan-bot:/var/lib/mysql
-volumes:
-  furiafan-bot:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=my-password
+      - REDIS_PORT_NUMBER=6379

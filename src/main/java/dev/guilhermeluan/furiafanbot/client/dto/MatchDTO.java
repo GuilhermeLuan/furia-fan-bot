@@ -53,6 +53,8 @@ public class MatchDTO {
     @JsonProperty("results") // Adicionado
     private List<ResultDTO> results;
 
+    @JsonProperty("streamUrls")
+    private List<String> streamUrls;
 
     // --- Construtores, Getters e Setters ---
     public MatchDTO() {
@@ -61,53 +63,31 @@ public class MatchDTO {
     // Adicione getters e setters para os novos campos:
     // id, status, endAt, winnerId, results
 
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
-
-    public String getName() {return name;}
-
-    public void setName(String name) {this.name = name;}
-
-    public String getStatus() {return status;}
-
-    public void setStatus(String status) {this.status = status;}
-
-    public TournamentDTO getTournament() {return tournament;}
-
-    public void setTournament(TournamentDTO tournament) {this.tournament = tournament;}
-
-    public LeagueDTO getLeague() {return league;}
-
-    public void setLeague(LeagueDTO league) {this.league = league;}
-
-    public List<OpponentWrapperDTO> getOpponents() {return opponents == null ? Collections.emptyList() : opponents;}
-
-    public void setOpponents(List<OpponentWrapperDTO> opponents) {this.opponents = opponents;}
-
-    public OffsetDateTime getBeginAt() {return beginAt;}
-
-    public void setBeginAt(OffsetDateTime beginAt) {this.beginAt = beginAt;}
-
-    public OffsetDateTime getEndAt() {return endAt;}
-
-    public void setEndAt(OffsetDateTime endAt) {this.endAt = endAt;}
-
-    public int getNumberOfGames() {return numberOfGames;}
-
-    public void setNumberOfGames(int numberOfGames) {this.numberOfGames = numberOfGames;}
-
-    public List<StreamDTO> getStreamsList() {return streamsList == null ? Collections.emptyList() : streamsList;}
-
-    public void setStreamsList(List<StreamDTO> streamsList) {this.streamsList = streamsList;}
-
-    public Long getWinnerId() {return winnerId;}
-
-    public void setWinnerId(Long winnerId) {this.winnerId = winnerId;}
-
-    public List<ResultDTO> getResults() {return results == null ? Collections.emptyList() : results;}
-
-    public void setResults(List<ResultDTO> results) {this.results = results;}
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+    public TournamentDTO getTournament() { return tournament; }
+    public void setTournament(TournamentDTO tournament) { this.tournament = tournament; }
+    public LeagueDTO getLeague() { return league; }
+    public void setLeague(LeagueDTO league) { this.league = league; }
+    public List<OpponentWrapperDTO> getOpponents() { return opponents == null ? Collections.emptyList() : opponents; }
+    public void setOpponents(List<OpponentWrapperDTO> opponents) { this.opponents = opponents; }
+    public OffsetDateTime getBeginAt() { return beginAt; }
+    public void setBeginAt(OffsetDateTime beginAt) { this.beginAt = beginAt; }
+    public OffsetDateTime getEndAt() { return endAt; }
+    public void setEndAt(OffsetDateTime endAt) { this.endAt = endAt; }
+    public int getNumberOfGames() { return numberOfGames; }
+    public void setNumberOfGames(int numberOfGames) { this.numberOfGames = numberOfGames; }
+    public List<StreamDTO> getStreamsList() { return streamsList == null ? Collections.emptyList() : streamsList; }
+    public void setStreamsList(List<StreamDTO> streamsList) { this.streamsList = streamsList; }
+    public Long getWinnerId() { return winnerId; }
+    public void setWinnerId(Long winnerId) { this.winnerId = winnerId; }
+    public List<ResultDTO> getResults() { return results == null ? Collections.emptyList() : results; }
+    public void setResults(List<ResultDTO> results) { this.results = results; }
+    public void setStreamUrls(List<String> streamUrls) { this.streamUrls = streamUrls; }
 
 
     // --- Métodos Auxiliares (mantidos e novos) ---
@@ -147,6 +127,7 @@ public class MatchDTO {
         }
         return Optional.empty();
     }
+
 
     public String getMatchType() {
         return "MD" + this.numberOfGames;
