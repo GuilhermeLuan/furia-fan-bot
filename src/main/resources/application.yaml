@@ -1,6 +1,8 @@
 spring:
   application:
     name: furia-fan-bot
+  deserialization:
+    ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT: true
   data:
     redis:
       host: ${REDIS_HOST:localhost}

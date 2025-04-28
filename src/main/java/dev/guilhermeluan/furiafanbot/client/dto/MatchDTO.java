@@ -53,6 +53,8 @@ public class MatchDTO {
     @JsonProperty("results") // Adicionado
     private List<ResultDTO> results;
 
+    @JsonProperty("streamUrls")
+    private List<String> streamUrls;
 
     // --- Construtores, Getters e Setters ---
     public MatchDTO() {
@@ -85,6 +87,7 @@ public class MatchDTO {
     public void setWinnerId(Long winnerId) { this.winnerId = winnerId; }
     public List<ResultDTO> getResults() { return results == null ? Collections.emptyList() : results; }
     public void setResults(List<ResultDTO> results) { this.results = results; }
+    public void setStreamUrls(List<String> streamUrls) { this.streamUrls = streamUrls; }
 
 
     // --- Métodos Auxiliares (mantidos e novos) ---
@@ -124,6 +127,7 @@ public class MatchDTO {
         }
         return Optional.empty();
     }
+
 
     public String getMatchType() {
         return "MD" + this.numberOfGames;

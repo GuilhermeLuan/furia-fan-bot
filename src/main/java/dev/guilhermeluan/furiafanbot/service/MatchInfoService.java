@@ -20,6 +20,7 @@ public class MatchInfoService {
         return pandaScoreClient.getUpcomingMatches();
     }
 
+    @Cacheable(value = "pastMatches")
     public List<MatchDTO> getPastMatches() {
         return pandaScoreClient.getPastMatches();
     }
