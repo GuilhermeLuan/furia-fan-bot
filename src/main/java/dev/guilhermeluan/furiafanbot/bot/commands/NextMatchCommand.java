@@ -3,7 +3,6 @@ package dev.guilhermeluan.furiafanbot.bot.commands;
 import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
 import dev.guilhermeluan.furiafanbot.handler.ResponseHandler;
 import dev.guilhermeluan.furiafanbot.service.MatchInfoService;
-import dev.guilhermeluan.furiafanbot.util.Constants;
 import dev.guilhermeluan.furiafanbot.util.TelegramMessageFormatter;
 import org.springframework.stereotype.Component;
 import org.telegram.abilitybots.api.objects.Locality;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @Component
-public class NextMatchCommand extends AbstractBotCommand{
+public class NextMatchCommand extends AbstractBotCommand {
 
     private final ResponseHandler responseHandler;
     private final MatchInfoService matchInfoService;

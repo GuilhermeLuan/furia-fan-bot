@@ -24,13 +24,13 @@ public class TelegramMessageFormatter {
     public static String formatNextMatches(List<MatchDTO> matches) {
         if (matches == null || matches.isEmpty()) {
             return """
-                   Opa! 🐾 Dei uma olhada aqui, mas parece que não tem nenhuma partida da Furia agendada no momento. 😥
-
-                   Fica de olho ou pergunta de novo mais tarde! Quem sabe já temos novidades. 😉
-
-                   Enquanto isso, que tal usar o /ultimoresultado ou /ajuda?
-
-                   #DIADEFURIA #FURIACS""";
+                    Opa! 🐾 Dei uma olhada aqui, mas parece que não tem nenhuma partida da Furia agendada no momento. 😥
+                    
+                    Fica de olho ou pergunta de novo mais tarde! Quem sabe já temos novidades. 😉
+                    
+                    Enquanto isso, que tal usar o /ultimoresultado ou /ajuda?
+                    
+                    #DIADEFURIA #FURIACS""";
         }
 
         StringBuilder sb = new StringBuilder();
@@ -87,13 +87,13 @@ public class TelegramMessageFormatter {
     public static String formatLastMatches(List<MatchDTO> matches) {
         if (matches == null || matches.isEmpty()) {
             return """
-                   Opa! 🐾 Busquei aqui, mas não encontrei resultados recentes de partidas da Furia. 🤔
-
-                   Pode ser que a informação ainda não esteja disponível ou não houve jogos recentemente.
-
-                   Tente usar o /proximojogo ou /ajuda!
-
-                   #DIADEFURIA #FURIACS""";
+                    Opa! 🐾 Busquei aqui, mas não encontrei resultados recentes de partidas da Furia. 🤔
+                    
+                    Pode ser que a informação ainda não esteja disponível ou não houve jogos recentemente.
+                    
+                    Tente usar o /proximojogo ou /ajuda!
+                    
+                    #DIADEFURIA #FURIACS""";
         }
 
         StringBuilder sb = new StringBuilder();
