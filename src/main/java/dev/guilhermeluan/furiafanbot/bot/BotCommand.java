@@ -9,10 +9,15 @@ import java.util.function.Consumer;
 
 public interface BotCommand {
     String getName();
+
     String getInfo();
+
     Locality getLocality();
+
     Privacy getPrivacy();
+
     Ability getAbility();
+
     Consumer<MessageContext> getAction();
 
 }
