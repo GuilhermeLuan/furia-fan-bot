@@ -9,6 +9,7 @@ public class Constants {
                     
                             ➡️ /proximojogo: Detalhes da próxima partida (quem, quando, onde).
                             ➡️ /ultimoresultado: Resultado do último confronto oficial.
+                            ➡️ /lineup: Lineup do time de CS.
                             ➡️ /ajuda: Relembrar os comandos.
                     
                             Estou sempre melhorando! Fique de olho para futuras novidades. 😉
@@ -30,7 +31,10 @@ public class Constants {
                     
                                 📊  /ultimoresultado: Relembre o placar e quem levou a melhor no(s) último(s) jogo(s) que tenho registrado.
                     
+                                ➡️ /lineup: Lineup do time de CS.
+                    
                                 ❓  /ajuda: Mostra esta mensagem aqui de novo pra você não esquecer. 😉
+                    
                     
                                 É só mandar o comando que você precisa! Bora torcer! ⚫️⚪️
                     
