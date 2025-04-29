@@ -1,18 +1,102 @@
 package dev.guilhermeluan.furiafanbot.util;
 
 import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
+import dev.guilhermeluan.furiafanbot.client.dto.PlayerDTO;
+import dev.guilhermeluan.furiafanbot.client.dto.TeamDTO;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class TelegramMessageFormatter {
     private static final ZoneId BRT_ZONE = ZoneId.of("America/Sao_Paulo");
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter
             .ofPattern("dd/MM/yyyy - HH:mm 'BRT'", new Locale("pt", "BR"));
+    private static final DateTimeFormatter BIRTHDAY_FORMATTER = DateTimeFormatter
+            .ofPattern("dd/MM/yyyy", new Locale("pt", "BR"));
+
+    /**
+     * Formata as informações da lineup de um time em uma string para mensagem do Telegram.
+     * Exibe os jogadores ativos com nickname, nome completo, idade e aniversário.
+     *
+     * @param team TeamDTO contendo as informações do time e a lista de jogadores.
+     * @return String formatada para o Telegram, ou mensagem indicando que a lineup não foi encontrada.
+     */
+    public static String formatLineup(TeamDTO team) {
+        if (team == null || team.getPlayers() == null || team.getPlayers().isEmpty()) {
+            return """
+                    Opa! 🐾 Tentei buscar a lineup, mas não encontrei informações dos jogadores no momento. 😥
+                    
+                    Pode ser um erro temporário ou os dados não estão disponíveis. Tente novamente mais tarde!
+                    
+                    Use /ajuda para ver outros comandos.
+                    
+                    #DIADEFURIA""";
+        }
+
+        // Filtra apenas os jogadores ativos
+        List<PlayerDTO> activePlayers = team.getPlayers().stream()
+                .filter(Objects::nonNull) // Garante que o jogador não é nulo
+                .filter(PlayerDTO::isActive) // Pega apenas jogadores ativos
+                .collect(Collectors.toList());
+
+        if (activePlayers.isEmpty()) {
+            return """
+                    Opa! 🐾 Parece que não há jogadores *ativos* registrados para a Furia no momento. 🤔
+                    
+                    Isso pode ser uma informação desatualizada ou uma mudança recente.
+                    
+                    Use /ajuda para ver outros comandos.
+                    
+                    #DIADEFURIA""";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("🐾 Lineup Atual da Furia 🐾\n\n");
+
+        for (PlayerDTO player : activePlayers) {
+            sb.append("👤 ").append(player.getNickname()).append(" ");
+
+            if (player.getFirstName() != null && player.getLastName() != null) {
+                sb.append(" (").append(player.getFirstName()).append(" ").append(player.getLastName()).append(")");
+            } else if (player.getFirstName() != null) {
+                sb.append(" (").append(player.getFirstName()).append(")");
+            }
+            sb.append("\n");
+
+            if (player.getAge() != null) {
+                sb.append("   🎂 Idade: ").append(player.getAge()).append(" anos\n");
+            } else {
+                sb.append("   🎂 Idade: Não informada\n");
+            }
+
+            if (player.getBirthday() != null) {
+                sb.append("   📅 Nascimento: ").append(player.getBirthday().format(BIRTHDAY_FORMATTER)).append("\n");
+            } else {
+                sb.append("   📅 Nascimento: Não informado\n");
+            }
+
+            if (player.getNationality() != null) {
+                sb.append("   \uD83C\uDFF3\uFE0F Nacionalidade: ").append(player.getNationality()).append("\n");
+            } else {
+                sb.append("   \uD83C\uDFF3\uFE0F Nacionalidade: Não informado\n");
+            }
+
+            sb.append("\n");
+        }
+
+        sb.append("---\n");
+        sb.append("Essa é a tropa! 🔥\n");
+        sb.append("#DIADEFURIA #FURIACS");
+
+        return sb.toString();
+    }
+
 
     /**
      * Formata uma lista de partidas futuras em uma string para mensagem do Telegram.

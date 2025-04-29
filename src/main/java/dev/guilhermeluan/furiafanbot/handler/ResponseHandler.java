@@ -27,6 +27,7 @@ public class ResponseHandler {
         List<String> commands = List.of(
                 "/proximojogo",
                 "/ultimoresultado",
+                "/lineup",
                 "/ajuda"
         );
 

@@ -1,6 +1,7 @@
 package dev.guilhermeluan.furiafanbot.client;
 
 import dev.guilhermeluan.furiafanbot.client.dto.MatchDTO;
+import dev.guilhermeluan.furiafanbot.client.dto.TeamDTO;
 import dev.guilhermeluan.furiafanbot.config.OpenFeignConfig;
 import dev.guilhermeluan.furiafanbot.config.PandaScoreClientConfiguration;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,7 @@ public interface PandaScoreClient {
     @GetMapping(
             value = "/teams?filter[name]=" + FURIA_TEAM_NAME
     )
-    Object getFuriaTeamInfo();
+    List<TeamDTO> getFuriaTeamInfo();
 
     @GetMapping(
             value = "/matches/upcoming?filter[opponent_id]=" + FURIA_TEAM_ID
