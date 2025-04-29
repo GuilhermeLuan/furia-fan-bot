@@ -57,12 +57,11 @@ public class TelegramMessageFormatter {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("🐾 **Lineup Atual da Furia** 🐾\n\n");
+        sb.append("🐾 Lineup Atual da Furia 🐾\n\n");
 
         for (PlayerDTO player : activePlayers) {
-            sb.append("👤 **").append(player.getNickname()).append("**"); // Nickname em negrito
+            sb.append("👤 ").append(player.getNickname()).append(" ");
 
-            // Adiciona nome completo se disponível
             if (player.getFirstName() != null && player.getLastName() != null) {
                 sb.append(" (").append(player.getFirstName()).append(" ").append(player.getLastName()).append(")");
             } else if (player.getFirstName() != null) {
@@ -70,20 +69,25 @@ public class TelegramMessageFormatter {
             }
             sb.append("\n");
 
-            // Adiciona idade se disponível
             if (player.getAge() != null) {
                 sb.append("   🎂 Idade: ").append(player.getAge()).append(" anos\n");
             } else {
                 sb.append("   🎂 Idade: Não informada\n");
             }
 
-            // Adiciona aniversário se disponível
             if (player.getBirthday() != null) {
                 sb.append("   📅 Nascimento: ").append(player.getBirthday().format(BIRTHDAY_FORMATTER)).append("\n");
             } else {
                 sb.append("   📅 Nascimento: Não informado\n");
             }
-            sb.append("\n"); // Linha extra para separar jogadores
+
+            if (player.getNationality() != null) {
+                sb.append("   \uD83C\uDFF3\uFE0F Nacionalidade: ").append(player.getNationality()).append("\n");
+            } else {
+                sb.append("   \uD83C\uDFF3\uFE0F Nacionalidade: Não informado\n");
+            }
+
+            sb.append("\n");
         }
 
         sb.append("---\n");
