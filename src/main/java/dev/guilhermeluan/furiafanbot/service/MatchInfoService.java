@@ -16,6 +16,7 @@ public class MatchInfoService {
         this.pandaScoreClient = pandaScoreClient;
     }
 
+    @Cacheable(value = "teamInfo")
     public List<TeamDTO> getFuriaTeamInfo() {
         return pandaScoreClient.getFuriaTeamInfo();
     }
