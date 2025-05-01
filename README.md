@@ -4,6 +4,8 @@
 
 Um bot para Telegram desenvolvido em Java com Spring Boot que informa sobre as próximas partidas, últimos resultados e a lineup atual do time de CS (Counter-Strike) da Furia. Os dados são obtidos em tempo real através da API da [PandaScore](https://pandascore.co/).
 
+Link do bot: https://t.me/FuriaCSGOFanBot
+
 ## Funcionalidades 
 
 O bot responde aos seguintes comandos no Telegram:
